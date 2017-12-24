@@ -69,7 +69,7 @@ function getGuild(){
     guild = JSON.parse(guilds[Server.ID]);
   }
   catch (e) {
-    guild = {crime: true, work: true, bal:true, prefix:?};
+    guild = {crime: true, work: true, bal:true, prefix:"?"};
     guilds[Server.ID] = JSON.stringify(guild);
   }
   return guild;
