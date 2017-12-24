@@ -64,24 +64,24 @@ function formatEmbed(title, body, color){
   return emb;
 }
 
-function checkEnabled(check){
+function getGuild(){
   try {
     guild = JSON.parse(guilds[Server.ID]);
-  } 
+  }
   catch (e) {
-    guild = {crime: true, work: true, bal: true};
+    guild = {crime: true, work: true, bal:true, prefix:?};
     guilds[Server.ID] = JSON.stringify(guild);
   }
+  return guild;
+}
+
+function checkEnabled(check){
+  guild = getGuild();
   return guild[check];
 } 
 
 function editEnabled(change){
-  try {
-    guild = JSON.parse(guilds[Server.ID]);
-  }
-  catch (e) {
-    guild = {crime: true, work: true, bal:true};
-  }
+  guild = getGuild();
   guild[change] = !guild[change];
   guilds[Server.ID] = JSON.stringify(guild);
   return;
@@ -126,6 +126,10 @@ function getRandomReply(invoked, money, check){
     }
   } 
   return arr[Math.floor(Math.random() * arr.length)].replace("__", money);
+}
+
+function checkPrefix(){
+  return Content.startsWith(getGuild().prefix);
 }
 
 refreshAccount() 
