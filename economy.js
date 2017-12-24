@@ -63,6 +63,7 @@ function checkEnabled(check){
   }
   return guild[check];
 } 
+
 function editEnabled(change){
   try {
     guild = JSON.parse(guilds[Server.ID]);
@@ -73,4 +74,8 @@ function editEnabled(change){
   guild[change] = !guild[change];
   guilds[Server.ID] = JSON.stringify(guild);
   return;
-} 
+}
+
+function random(min, max){
+  return Math.floor(Math.random()*(max-min+1)+min);
+}
