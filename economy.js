@@ -108,7 +108,10 @@ robneg = ["You try to rob a shop but got caught and fined $__",
 "You were caught stealing cookies and got fined $__", 
 "You lost a bet against someone**+** and lost $__"];
 
-function getRandomReply(invoked, money, check="positive"){
+function getRandomReply(invoked, money, check){
+  if(check == undefined){
+    check = "positive";
+  } 
   if(check == "negative"){
     arr = robneg;
   }
