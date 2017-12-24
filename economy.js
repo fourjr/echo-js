@@ -66,11 +66,11 @@ function formatEmbed(title, body, color){
 
 function getGuild(){
   try {
-    guild = JSON.parse(guilds[Server.ID]);
+    guild = JSON.parse(guilds[Channel.ID]);
   }
   catch (e) {
     guild = {crime: true, work: true, bal:true, prefix:"?"};
-    guilds[Server.ID] = JSON.stringify(guild);
+    guilds[Channel.ID] = JSON.stringify(guild);
   }
   return guild;
 }
@@ -83,7 +83,7 @@ function checkEnabled(check){
 function editEnabled(change){
   guild = getGuild();
   guild[change] = !guild[change];
-  guilds[Server.ID] = JSON.stringify(guild);
+  guilds[Channel.ID] = JSON.stringify(guild);
   return;
 }
 
