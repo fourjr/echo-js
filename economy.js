@@ -125,5 +125,5 @@ function getRandomReply(invoked, money, check){
       }
     }
   } 
-  return arr[Math.floor(Math.random() * array.length)].replace("__", money);
+  return arr[Math.floor(Math.random() * arr.length)].replace("__", money);
 }
