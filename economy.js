@@ -103,7 +103,7 @@ robpos = ["You broke into someone**+**'s house and stole his $__",
 "You bribed a staff member to add $__ to your account and it worked!"];
 
 robneg = ["You try to rob a shop but got caught and fined $__",
-"You were caught vandalizing and got fined $__,
+"You were caught vandalizing and got fined $__",
 "You hacked into the white house database but got caught. You lose $__",
 "You were caught stealing cookies and got fined $__", 
 "You lost a bet against someone**+** and lost $__"];
