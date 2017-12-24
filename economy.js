@@ -16,22 +16,14 @@ function checkCooldown(){
     return false;
   }
   else {
-    raw =  bank.cooldown - unix;
-    hours = Math.max(Math.round(raw/60/60), 0);
-    minutes = Math.max(Math.round((raw - hours*60*60)/60), 0);
-    //hours = Math.max(Math.round((raw - minutes*60)/60/60), 0);
-    seconds = Math.max(Math.round(raw - minutes*60 - hours*60*60), 0);
-    if(hours == 0){
-      if(minutes == 0){
-        time = seconds + " seconds";
-      } 
-      else {
-        time = minutes + " minutes and " + seconds + " seconds";
-      } 
-   } else {
-      time = hours + " hours, " + minutes + " minutes and " + seconds + " seconds";
-   }
-    return time;
+    d =  bank.cooldown - unix;
+h = Math.floor(d / 3600); 
+m = Math.floor(d % 3600 / 60); 
+s = Math.floor(d % 3600 % 60); 
+hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : ""; 
+mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : ""; 
+sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : ""; 
+return hDisplay + mDisplay + sDisplay;
   }
 }
 
