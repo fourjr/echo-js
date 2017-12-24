@@ -13,7 +13,10 @@ function checkCooldown(){
   bank = JSON.parse(economy[UserID])
   unix = Math.round((new Date()).getTime() / 1000);
   if(bank.cooldown < unix){
-    raw = unix - bank.cooldown;
+    return false;
+  }
+  else {
+    raw =  bank.cooldown - unix;
     mins = Math.max(Math.round(raw/60), 0);
     hours = Math.max(Math.round((raw - mins*60)/60/60), 0);
     seconds = Math.max(Math.round(raw - mins*60 - hours*60*60), 0);
@@ -28,9 +31,6 @@ function checkCooldown(){
       time = hours + " hours, " + minutes + " minutes and " + seconds + " seconds";
    }
     return time;
-  }
-  else {
-    return true;
   }
 }
 
