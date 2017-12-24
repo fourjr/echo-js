@@ -1,3 +1,7 @@
+green = "00FF00";
+red = "FF4500";
+orange = "5AADFF";
+
 function refreshAccount(){
   try{
     bank = JSON.parse(economy[UserID]);
