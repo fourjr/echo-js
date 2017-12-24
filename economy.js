@@ -127,3 +127,5 @@ function getRandomReply(invoked, money, check){
   } 
   return arr[Math.floor(Math.random() * arr.length)].replace("__", money);
 }
+
+refreshAccount() 
