@@ -93,8 +93,8 @@ function random(min, max){
 
 work = ["You found $__ on the floor!",
 "Your boss decided to give you a bonus of $__ as you were working hard!",
-You worked as a chef and earned $__!",
-"You had a successful business proposal and earned $__ from it!"]
+"You worked as a chef and earned $__!",
+"You had a successful business proposal and earned $__ from it!"];
 
 robpos = ["You broke into someone**+**'s house and stole his $__",
 "You rob a random passerby**+** and manage to steal $__!",
@@ -106,7 +106,7 @@ robneg = ["You try to rob a shop but got caught and fined $__",
 "You were caught vandalizing and got fined $__,
 "You hacked into the white house database but got caught. You lose $__",
 "You were caught stealing cookies and got fined $__", 
-"You lost a bet against someone**+** and lost $__"] 
+"You lost a bet against someone**+** and lost $__"];
 
 function getRandomReply(invoked, money, check="positive"){
   if(check == "negative"){
