@@ -18,8 +18,8 @@ function checkCooldown(){
   else {
     raw =  bank.cooldown - unix;
     minutes = Math.max(Math.round(raw/60), 0);
-    hours = Math.max(Math.round((raw - mins*60)/60/60), 0);
-    seconds = Math.max(Math.round(raw - mins*60 - hours*60*60), 0);
+    hours = Math.max(Math.round((raw - minutes*60)/60/60), 0);
+    seconds = Math.max(Math.round(raw - minutes*60 - hours*60*60), 0);
     if(hours == 0){
       if(minutes == 0){
         time = seconds + " seconds";
