@@ -123,6 +123,7 @@ function getRandomReply(invoked, money, check){
       if(invoked == "work"){
         arr = work;
       }
-   }
+    }
+  } 
   return arr[Math.floor(Math.random() * array.length)].replace("__", money);
 }
