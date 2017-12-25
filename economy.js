@@ -7,7 +7,7 @@ function refreshAccount(){
     bank = JSON.parse(economy[RawUserID]);
     bank.name = RawUsername;
   } catch (e) {
-    def = {name:Username, money:0, cooldown:0};
+    def = {name:RawUsername, money:0, cooldown:0};
     economy[RawUserID] = JSON.stringify(def);
   }
   return;
