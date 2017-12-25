@@ -128,12 +128,12 @@ function getRandomReply(invoked, money, check){
   return arr[Math.floor(Math.random() * arr.length)].replace("__", money);
 }
 
-function checkPrefix(pref){
+function checkPrefix(invoked, pref){
   if pref == undefined{
-    return Content.startsWith(getChannel().prefix);
+    return Content.startsWith(getChannel().prefix + invoked);
   } 
   else {
-    return Content.startsWith(pref);
+    return Content.startsWith(pref + invoked);
   } 
 }
 
