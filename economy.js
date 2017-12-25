@@ -32,7 +32,7 @@ return hDisplay + mDisplay + sDisplay;
 }
 
 function startCooldown(time){
-  bank = JSON.parse(economy[UserID]);
+  bank = JSON.parse(economy[RawUserID]);
   unix = Math.round((new Date()).getTime() / 1000);
   bank.cooldown = unix + 60*60*time;
   economy[RawUserID] = JSON.stringify(bank);
@@ -40,19 +40,23 @@ function startCooldown(time){
 }
 
 function editMoney(tare, value){
-  bank = JSON.parse(economy[UserID]) 
+  bank = JSON.parse(economy[RawUserID]) 
   if(tare === 'positive'){
     bank.money += value;
   }
   else if(tare === 'negative'){
     bank.money -= value;
   }
-  economy[UserID] = JSON.stringify(bank);
+  economy[RawUserID] = JSON.stringify(bank);
   return;
 } 
 
-function getAccount(){
-  return JSON.parse(economy[UserID]);
+function getAccount(mention){
+  if(mention == undefined){
+    return JSON.parse(economy[RawUserID]);
+ } 
+  else {
+    return JSON.parse(economy[UserID]);
 }
 
 function formatEmbed(title, body, color){
@@ -60,7 +64,7 @@ function formatEmbed(title, body, color){
   emb.title = title;
   emb.description = body;
   emb.color = HTML2Int("#" + color);
-  emb.author = {name:Username, icon_url: "https://cdn.discordapp.com/avatars/" + UserID + "/" + JSON.stringify(UserImage).replace(/"/g, "") + ".webp?size=1024"};
+  emb.author = {name:RawUsername, icon_url: "https://cdn.discordapp.com/avatars/" + RawUserID + "/" + JSON.stringify(RawUserImage).replace(/"/g, "") + ".webp?size=1024"};
   return emb;
 }
 
