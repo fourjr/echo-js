@@ -24,6 +24,47 @@ robneg = ["You try to rob a shop but got caught and fined $__",
   "You lost a bet against someone**+** and lost $__"
 ];
 
+function getAccount(mention) {
+  if (mention == undefined) {
+    return JSON.parse(economy[RawUserID]);
+  } else {
+    return JSON.parse(economy[UserID]);
+  }
+}
+
+function getChannel() {
+  try {
+    channel = JSON.parse(channels[Channel.ID]);
+  } catch (e) {
+    channel = {
+      crime: true,
+      work: true,
+      bal: true,
+      prefix: "?"
+    };
+    channels[Channel.ID] = JSON.stringify(channel);
+  }
+  return channel;
+}
+
+function getRandomReply(invoked, money, check) {
+  if (check == undefined) {
+    check = "positive";
+  }
+  if (check == "negative") {
+    arr = robneg;
+  } else {
+    if (invoked == "crime") {
+      arr = robpos;
+    } else {
+      if (invoked == "work") {
+        arr = work;
+      }
+    }
+  }
+  return arr[Math.floor(Math.random() * arr.length)].replace("__", money);
+}
+
 function refreshAccount() {
   try {
     bank = JSON.parse(economy[RawUserID]);
@@ -75,29 +116,6 @@ function editMoney(tare, value) {
   return;
 }
 
-function getAccount(mention) {
-  if (mention == undefined) {
-    return JSON.parse(economy[RawUserID]);
-  } else {
-    return JSON.parse(economy[UserID]);
-  }
-}
-
-function getChannel() {
-  try {
-    channel = JSON.parse(channels[Channel.ID]);
-  } catch (e) {
-    channel = {
-      crime: true,
-      work: true,
-      bal: true,
-      prefix: "?"
-    };
-    channels[Channel.ID] = JSON.stringify(channel);
-  }
-  return channel;
-}
-
 function checkEnabled(check) {
   channel = getChannel();
   return channel[check];
@@ -108,24 +126,6 @@ function editEnabled(change) {
   channel[change] = !channel[change];
   channels[Channel.ID] = JSON.stringify(channel);
   return;
-}
-
-function getRandomReply(invoked, money, check) {
-  if (check == undefined) {
-    check = "positive";
-  }
-  if (check == "negative") {
-    arr = robneg;
-  } else {
-    if (invoked == "crime") {
-      arr = robpos;
-    } else {
-      if (invoked == "work") {
-        arr = work;
-      }
-    }
-  }
-  return arr[Math.floor(Math.random() * arr.length)].replace("__", money);
 }
 
 function checkPrefix(invoked, pref) {
