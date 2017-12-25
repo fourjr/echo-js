@@ -66,17 +66,25 @@ function getRandomReply(invoked, money, check) {
   return arr[Math.floor(Math.random() * arr.length)].replace("__", money);
 }
 
-function refreshAccount() {
-  try {
-    bank = JSON.parse(economy[RawUserID]);
-    bank.name = RawUsername;
-  } catch (e) {
-    def = {
-      name: Username,
+function refreshAccount(mention) {
+  if(mention == undefined){
+    ID = RawUserID;
+    name = RawUsername;
+  } else {
+    ID = UserID;
+    name = Username;
+  } 
+
+  try {
+    bank = JSON.parse(economy[ID]);
+    bank.name = name
+  } catch (e) {
+    def = {
+      name: name,
       money: 0,
       cooldown: 0
     };
-    economy[RawUserID] = JSON.stringify(def);
+    economy[ID] = JSON.stringify(def);
   }
   return;
 }
