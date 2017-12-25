@@ -1,85 +1,68 @@
-use economy;
-use channels;
+use economy; use channels;
 
-green = "00FF00";
-red = "FF4500";
-orange= "FFC800";
-blue = "5AADFF";
+green = "00FF00"; red = "FF4500"; orange= "FFC800"; blue = "5AADFF";
 
 reserved = ['<@249891250117804032>', Prefix];
 
-work = ["You found $__ on the floor!",
-  "Your boss decided to give you a bonus of $__ as you were working hard!",
-  "You worked as a chef and earned $__!",
-  "You had a successful business proposal and earned $__ from it!"
-];
+work = ["You found $__ on the floor!",   "Your boss decided to give you a bonus of $__ as you were working hard!",   "You worked as a chef and earned $ !",   "You had a successful business proposal and earned $ from it!" ];
 
-robpos = ["You broke into someone**+**'s house and stole his $__",
-  "You rob a random passerby**+** and manage to steal $__!",
-  "You saw a bank and seized the opportunity. You earned $__ from the heist!",
-  "You hacked Echo and gave yourself $__",
-  "You bribed a staff member to add $__ to your account and it worked!"
-];
+robpos = ["You broke into someone**+ 's house and stole his $__",   "You rob a random passerby +** and manage to steal $ !",   "You saw a bank and seized the opportunity. You earned $ from the heist!",   "You hacked Echo and gave yourself $ ",   "You bribed a staff member to add $ to your account and it worked!" ];
 
-robneg = ["You try to rob a shop but got caught and fined $__",
-  "You were caught vandalizing and got fined $__",
-  "You hacked into the white house database but got caught. You lose $__",
-  "You were caught stealing cookies and got fined $__",
-  "You lost a bet against someone**+** and lost $__"
-];
+robneg = ["You try to rob a shop but got caught and fined $ ",   "You were caught vandalizing and got fined $ ",   "You hacked into the white house database but got caught. You lose $ ",   "You were caught stealing cookies and got fined $ ",   "You lost a bet against someone**+** and lost $__" ];
 
-helpMessage = "```md\
-Important Notes:\
------------------------------------\
-The prefix can be changed, and is default set to ?, you may refer to <Misc Commands> on instructions about how to change it. \
-\
-Accounts for users are automatically created once they do any command in the system. \
-\
-There is a 4 hour global cooldown after a user does any command in the next category. \
-\
-Ways to Earn Money:\
------------------------------------\
-//Replace [p] with your set prefix (default to ?)\
-\
-[p]crime\
-There's an extremely high chance your heist would\ succeed, yet the police still pose a threat!\
-\
-[p]work\
-Working hard never goes wrong! Instant money in the\ pocket!\
-\
-Other money related commands\
------------------------------------\
-//These don't have a set cooldown!\
-\
+helpMessage = "```md
+Important Notes:
+-----------------------------------
+The prefix can be changed, and is default set to ?, you may refer to on instructions about how to change it.
+
+Accounts for users are automatically created once they do any command in the system.
+
+There is a 4 hour global cooldown after a user does any command in the next category.
+
+Ways to Earn Money:
+-----------------------------------
+//Replace [p] with your set prefix (default to ?)
+
+[p]crime
+There's an extremely high chance your heist would\ succeed, yet the police still pose a threat!
+
+[p]work
+Working hard never goes wrong! Instant money in the\ pocket!
+
+Other money related commands
+-----------------------------------
+//These don't have a set cooldown!
+
 [p]bal
-Shows the whole world how rich ~~or poor~~ you are\
-\
-[p]leaderboard\
-Are you the biggest millionaire in the whole of discord? Find out here.\
-\
-Miscellaneous Commands\
------------------------------------\
-//All settings are channel based, this means that you can have different prefixes per channels you lock this intralink to, or even different commands enabled per channel.\
-\
-[p]prefix <new prefix>\
-- Requires Manage Server permission\
-Hate the default prefix as the question mark? Change it using this command.\
-Note: Some prefixes are protected, for example, the prefix you set normal Echo to, and some others. It will return an error message.\
-\
-[p]toggle <command name>\
-- Requires Manage Server permission\
-If you want your whole server to work hard to earn money, disable crime!\
-Note: Some commands are protected, and will return an error message if you try to toggle them.\
-\
-[p]help\
-Shows this rather long message that contains a ton of information you most likely won't read but will need\
-\
-Help! I broke something! I found a bug! I forgot my prefix! I have suggestions!\
------------------------------------\
-Drop me a DM, 4JR#2713, if you need a mutual server, join Echo's official server.\
-\
+Shows the whole world how rich or poor you are
+
+[p]leaderboard
+Are you the biggest millionaire in the whole of discord? Find out here.
+
+Miscellaneous Commands
+-----------------------------------
+//All settings are channel based, this means that you can have different prefixes per channels you lock this intralink to, or even different commands enabled per channel.
+
+[p]prefix \
+• Requires Manage Server permission
+Hate the default prefix as the question mark? Change it using this command.
+Note: Some prefixes are protected, for example, the prefix you set normal Echo to, and some others. It will return an error message.
+
+[p]toggle \
+• Requires Manage Server permission
+If you want your whole server to work hard to earn money, disable crime!
+Note: Some commands are protected, and will return an error message if you try to toggle them.
+
+[p]help
+Shows this rather long message that contains a ton of information you most likely won't read but will need
+
+Help! I broke something! I found a bug! I forgot my prefix! I have suggestions!
+-----------------------------------
+Drop me a DM, 4JR#2713, if you need a mutual server, join Echo's official server.
+
 https://discord.gg/7JMJjGk\
-```"
+
+
 
 function getAccount(mention) {
   if (mention == undefined) {
@@ -219,3 +202,6 @@ function random(min, max) {
 }
 
 refreshAccount();
+
+
+
