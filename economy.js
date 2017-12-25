@@ -1,6 +1,7 @@
 green = "00FF00";
 red = "FF4500";
-orange = "5AADFF";
+orange= "FFC800";
+blue = "5AADFF";
 
 reserved = ['<@249891250117804032>', Prefix];
 
