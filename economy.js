@@ -64,26 +64,26 @@ function formatEmbed(title, body, color){
   return emb;
 }
 
-function getGuild(){
+function getChannel(){
   try {
-    guild = JSON.parse(guilds[Channel.ID]);
+    channel = JSON.parse(channels[Channel.ID]);
   }
   catch (e) {
-    guild = {crime: true, work: true, bal:true, prefix:"?"};
-    guilds[Channel.ID] = JSON.stringify(guild);
+    channel = {crime: true, work: true, bal:true, prefix:"?"};
+    channels[Channel.ID] = JSON.stringify(channel);
   }
-  return guild;
+  return channel;
 }
 
 function checkEnabled(check){
-  guild = getGuild();
-  return guild[check];
+  channel = getChannel();
+  return channel[check];
 } 
 
 function editEnabled(change){
-  guild = getGuild();
-  guild[change] = !guild[change];
-  guilds[Channel.ID] = JSON.stringify(guild);
+  channel = getChannel();
+  channel[change] = !channel[change];
+  channels[Channel.ID] = JSON.stringify(channel);
   return;
 }
 
@@ -128,8 +128,15 @@ function getRandomReply(invoked, money, check){
   return arr[Math.floor(Math.random() * arr.length)].replace("__", money);
 }
 
-function checkPrefix(){
-  return Content.startsWith(getGuild().prefix);
+function checkPrefix(pref){
+  if pref == undefined{
+    return Content.startsWith(getChannel().prefix);
+  } 
+  else {
+    return Content.startsWith(pref);
+  } 
 }
 
-refreshAccount() 
+reserved = ['<@249891250117804032>', Prefix];
+
+refreshAccount();
