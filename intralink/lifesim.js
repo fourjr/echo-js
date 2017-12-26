@@ -7,7 +7,7 @@ try {
   users[RawUserID] = JSON.stringify(u);
 } catch (e) {
   def = {name: RawUsername, lives: [], ongoingGame: false};
-  users[RawUserID] = def;
+  users[RawUserID] = JSON.stringify(def);
 }
 return;
 }
