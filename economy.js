@@ -135,12 +135,14 @@ function getAccount(mention) {
 function getChannel() {
   try {
     channel = JSON.parse(channels[Channel.ID]);
+    channel.name = Channel.Name;
   } catch (e) {
     channel = {
       crime: true,
       work: true,
       bal: true,
-      prefix: "?"
+      prefix: "?",
+      name:Channel.Name
     };
     channels[Channel.ID] = JSON.stringify(channel);
   }
