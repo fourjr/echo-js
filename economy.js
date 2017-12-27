@@ -246,6 +246,9 @@ function checkPrefix(invoked, pref) {
 }
 
 function getIcon(id) {
+    if(Channel.Type == 1){
+        return "https://cdn.discordapp.com/avatars/" + id + "/" + UserImage + ".png";
+    } 
     var text = [];
     for (i = 0; i < ServerMembers.length; i++) {
         if (ServerMembers[i].User.ID === id) {
