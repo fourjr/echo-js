@@ -1,4 +1,5 @@
-use economy; use channels;
+use economy; 
+use channels;
 
 green = "00FF00"; red = "FF4500"; orange= "FFC800"; blue = "5AADFF";
 
@@ -244,6 +245,21 @@ function checkPrefix(invoked, pref) {
   }
 }
 
+function getIcon(id) {
+    var text = [];
+    for (i = 0; i < ServerMembers.length; i++) {
+        if (ServerMembers[i].User.ID === id) {
+            text.push(ServerMembers[i].User.Avatar);
+        }
+    }
+    if (text.length !== 0) {
+var hash = text[0]
+        return "https://cdn.discordapp.com/avatars/"+id+"/"+hash+".png";
+    } else {
+        throw new ReferenceError(id + " not found in guild");
+    }
+}
+
 function formatEmbed(title, body, color) {
   emb = {};
   emb.title = title;
@@ -251,7 +267,7 @@ function formatEmbed(title, body, color) {
   emb.color = HTML2Int("#" + color);
   emb.author = {
     name: RawUsername,
-    icon_url: "https://cdn.discordapp.com/avatars/" + RawUserID + "/" + UserImage + ".webp?size=1024"
+    icon_url: getIcon(RawUserID)
   };
   return emb;
 }
