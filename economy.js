@@ -11,55 +11,55 @@ robpos = ["You broke into someone's house and stole his $__", "You rob a random 
 robneg = ["You try to rob a shop but got caught and fined $__",   "You were caught vandalizing and got fined $__",   "You hacked into the white house database but got caught. You lose $__",   "You were caught stealing cookies and got fined $__",   "You lost a bet against someone and lost $__" ];
 
 helpMessage = "```md\
-Important Notes:\
------------------------------------\
-The prefix can be changed, and is default set to ?, you may refer to on instructions about how to change it.\
-\
-Accounts for users are automatically created once they do any command in the system.\
-\
-There is a 4 hour global cooldown after a user does any command in the next category.\
-\
-Ways to Earn Money:\
------------------------------------\
+Important Notes:\n\
+-----------------------------------\n\
+The prefix can be changed, and is default set to ?, you may refer to on instructions about how to change it.\n\
+\n\
+Accounts for users are automatically created once they do any command in the system.\n\
+\n\
+There is a 4 hour global cooldown after a user does any command in the next category.\n\
+\n\
+Ways to Earn Money:\n\
+-----------------------------------\n\
 //Replace [p] with your set prefix (default to ?)\
-\
-[p]crime\
+\n\
+[p]crime\n\
 There's an extremely high chance your heist would succeed, yet the police still pose a threat!\
-\
-[p]work\
-Working hard never goes wrong! Instant money in the pocket!\
-\
-Other money related commands\
------------------------------------\
-//These don't have a set cooldown!\
-\
-[p]bal\
-Shows the whole world how rich or poor you are\
-\
-[p]leaderboard\
-Are you the biggest millionaire in the whole of discord? Find out here.\
-\
-Miscellaneous Commands\
------------------------------------\
-//All settings are channel based, this means that you can have different prefixes per channels you lock this intralink to, or even different commands enabled per channel.\
-\
-[p]prefix \
-• Requires Manage Server permission\
-Hate the default prefix as the question mark? Change it using this command.\
-Note: Some prefixes are protected, for example, the prefix you set Echo to, and some others. It will return an error message.\
-\
-[p]toggle \
-• Requires Manage Server permission\
-If you want your whole server to work hard to earn money, disable crime!\
-Note: Some commands are protected, and will return an error message if you try to toggle them.\
-\
-[p]help\
-Shows this rather long message that contains a ton of information you most likely won't read but will need\
-\
-Help! I broke something! I found a bug! I forgot my prefix! I have suggestions!\
------------------------------------\
-Drop me a DM, 4JR#2713, if you need a mutual server, join Echo's official server.\
-\
+\n\
+[p]work\n\
+Working hard never goes wrong! Instant money in the pocket!\n\
+\n\
+Other money related commands\n\
+-----------------------------------\n\
+//These don't have a set cooldown!\n\
+\n\
+[p]bal\n\
+Shows the whole world how rich or poor you are\n\
+\n\
+[p]leaderboard\n\
+Are you the biggest millionaire in the whole of discord? Find out here.\n\
+\n\
+Miscellaneous Commands\n\
+-----------------------------------\n\
+//All settings are channel based, this means that you can have different prefixes per channels you lock this intralink to, or even different commands enabled per channel.\n\
+\n\
+[p]prefix \n\
+• Requires Manage Server permission\n\
+Hate the default prefix as the question mark? Change it using this command.\n\
+Note: Some prefixes are protected, for example, the prefix you set Echo to, and some others. It will return an error message.\n\
+\n\
+[p]toggle \n\
+• Requires Manage Server permission\n\
+If you want your whole server to work hard to earn money, disable crime!\n\
+Note: Some commands are protected, and will return an error message if you try to toggle them.\n\
+\n\
+[p]help\n\
+Shows this rather long message that contains a ton of information you most likely won't read but will need\n\
+\n\
+Help! I broke something! I found a bug! I forgot my prefix! I have suggestions!\n\
+-----------------------------------\n\
+Drop me a DM, 4JR#2713, if you need a mutual server, join Echo's official server.\n\
+\n\
 https://discord.gg/7JMJjGk"
 
 //startsWith
