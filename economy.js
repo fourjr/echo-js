@@ -144,7 +144,7 @@ function getChannel(id){
     channel = JSON.parse(channels[id]);
     channel.name = Channel.Name;
   } catch (e) {
-    if guildChanID.includes(channels[id]){
+    if(guildChanID.includes(channels[id])){
       return getChannel(channels[Channel.ID]);
     } 
     channel = {
