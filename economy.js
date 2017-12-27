@@ -22,6 +22,8 @@ There is a 4 hour global cooldown after a user does any command in the next cate
 \n\
 Ways to Earn Money:\n\
 -----------------------------------\n\
+//Replace [p] with your set prefix (default to ?)\
+\n\
 [p]crime\n\
 There's an extremely high chance your heist would succeed, yet the police still pose a threat!\
 \n\
@@ -130,11 +132,21 @@ function getAccount(mention) {
   }
 }
 
-function getChannel() {
+function getChannel(id){
+  guildChanID = [];
+  if(id == undefined){
+    for(i = 0; i < Server.Channels; i++){
+      guildChanID.push(Server.Channels[i].ID);
+    } 
+    id = Channel.ID;
+  } 
   try {
-    channel = JSON.parse(channels[Channel.ID]);
+    channel = JSON.parse(channels[id]);
     channel.name = Channel.Name;
   } catch (e) {
+    if guildChanID.includes(channels[id]){
+      return getChannel(channels[Channel.ID]);
+    } 
     channel = {
       crime: true,
       work: true,
