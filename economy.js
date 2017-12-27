@@ -3,7 +3,7 @@ use channels;
 
 green = "00FF00"; red = "FF4500"; orange= "FFC800"; blue = "5AADFF";
 
-reserved = ['<@249891250117804032>', Prefix];
+reserved = ["<@249891250117804032>", "."];
 
 work = ["You found $__ on the floor!",   "Your boss decided to give you a bonus of $__ as you were working hard!",   "You worked as a chef and earned $__!",   "You had a successful business proposal and earned $__ from it!" ];
 
