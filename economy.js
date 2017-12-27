@@ -182,7 +182,7 @@ function editEnabled(change) {
 }
 
 function checkPrefix(invoked, pref) {
-  if pref == undefined {
+  if(pref == undefined) {
     return Content.startsWith(getChannel().prefix + invoked);
   }
   else {
