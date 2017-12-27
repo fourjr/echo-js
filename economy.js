@@ -10,7 +10,7 @@ robpos = ["You broke into someone's house and stole his $__", "You rob a random 
 
 robneg = ["You try to rob a shop but got caught and fined $__",   "You were caught vandalizing and got fined $__",   "You hacked into the white house database but got caught. You lose $__",   "You were caught stealing cookies and got fined $__",   "You lost a bet against someone and lost $__" ];
 
-helpMessage = "```md\
+helpMessage = "```md\n\
 Important Notes:\n\
 -----------------------------------\n\
 The prefix can be changed, and is default set to ?, you may refer to on instructions about how to change it.\n\
@@ -60,7 +60,8 @@ Help! I broke something! I found a bug! I forgot my prefix! I have suggestions!\
 -----------------------------------\n\
 Drop me a DM, 4JR#2713, if you need a mutual server, join Echo's official server.\n\
 \n\
-https://discord.gg/7JMJjGk"
+https://discord.gg/7JMJjGk\n\
+```"
 
 //startsWith
 if (!String.prototype.startsWith) {
@@ -68,6 +69,9 @@ if (!String.prototype.startsWith) {
       return this.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
   };
 }
+
+//Array.includes
+// https://tc39.github.io/ecma262/#sec-array.prototype.includes if (!Array.prototype.includes) { Object.defineProperty(Array.prototype, 'includes', { value: function(searchElement, fromIndex) { if (this == null) { throw new TypeError('"this" is null or not defined'); } // 1. Let O be ? ToObject(this value). var o = Object(this); // 2. Let len be ? ToLength(? Get(O, "length")). var len = o.length >>> 0; // 3. If len is 0, return false. if (len === 0) { return false; } // 4. Let n be ? ToInteger(fromIndex). // (If fromIndex is undefined, this step produces the value 0.) var n = fromIndex | 0; // 5. If n ≥ 0, then // a. Let k be n. // 6. Else n < 0, // a. Let k be len + n. // b. If k < 0, let k be 0. var k = Math.max(n >= 0 ? n : len - Math.abs(n), 0); function sameValueZero(x, y) { return x === y || (typeof x === 'number' && typeof y === 'number' && isNaN(x) && isNaN(y)); } // 7. Repeat, while k < len while (k < len) { // a. Let elementK be the result of ? Get(O, ! ToString(k)). // b. If SameValueZero(searchElement, elementK) is true, return true. if (sameValueZero(o[k], searchElement)) { return true; } // c. Increase k by 1. k++; } // 8. Return false return false; } });
 
 function getAccount(mention) {
   if (mention == undefined) {
