@@ -62,6 +62,13 @@ Drop me a DM, 4JR#2713, if you need a mutual server, join Echo's official server
 \
 https://discord.gg/7JMJjGk"
 
+//startsWith
+if (!String.prototype.startsWith) {
+  String.prototype.startsWith = function(search, pos) {
+      return this.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search;
+  };
+}
+
 function getAccount(mention) {
   if (mention == undefined) {
     return JSON.parse(economy[RawUserID]);
