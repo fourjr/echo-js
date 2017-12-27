@@ -197,7 +197,7 @@ function formatEmbed(title, body, color) {
   emb.color = HTML2Int("#" + color);
   emb.author = {
     name: RawUsername,
-    icon_url: "https://cdn.discordapp.com/avatars/" + RawUserID + "/" + JSON.stringify(RawUserImage).replace(/"/g, "") + ".webp?size=1024"
+    icon_url: "https://cdn.discordapp.com/avatars/" + RawUserID + "/" + UserImage + ".webp?size=1024"
   };
   return emb;
 }
