@@ -20,7 +20,7 @@ function getAccount(){
 
 
 function choiceConfirm(mode, selection){
-sel = {gender:
+cc = {gender:
   {default: "You have picked the __ gender.", 1: "male", 2: "female"}
 }
 try {
