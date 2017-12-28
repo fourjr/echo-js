@@ -23,10 +23,10 @@ function choiceConfirm(mode, selection){
 cc = {gender:
   {default: "You have picked the __ gender.", 1: "male", 2: "female"}
 }
-try {
+//try {
   return cc[mode]["default"].replace("__", cc[mode][String(selection)]);
-} catch (e) {
-  throw new ReferenceError("Invalid mode in choiceConfirm\n" + e);
+//} catch (e) {
+  //throw new ReferenceError("Invalid mode in choiceConfirm");
 } 
 } 
 
