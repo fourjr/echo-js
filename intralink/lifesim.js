@@ -24,7 +24,7 @@ cc = {gender:
   {default: "You have picked the __ gender.", 1: "male", 2: "female"}
 }
 //try {
-  return cc[mode]["default"].replace("__", cc[mode][String(selection)]);
+  return "x" + mode + "x";
 //} catch (e) {
   //throw new ReferenceError("Invalid mode in choiceConfirm");
 //} 
