@@ -32,6 +32,7 @@ function choiceConfirm(mode, selection){
     u = JSON.parse(users[RawUserID]);
     u.gender = cc[mode][String(selection)];
     users[RawUserID] = JSON.stringify(u);
+  } 
 } 
 return rval;
 
