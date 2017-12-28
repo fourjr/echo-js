@@ -20,14 +20,19 @@ function getAccount(){
 
 
 function choiceConfirm(mode, selection){
-cc = {gender:
-  {default: "You have picked the __ gender.", 1: "male", 2: "female"}
-}
-try {
-  return cc[mode]["default"].replace("__", cc[mode][String(selection)])
-} catch (e) {
-  throw new ReferenceError("Invalid mode in choiceConfirm");
+  cc = {gender:
+    {default: "You have picked the __ gender.", 1: "male", 2: "female"} 
+  }
+  try {
+    rval = cc[mode]["default"].replace("__", cc[mode][String(selection)])
+  } catch (e) {
+    throw new ReferenceError("Invalid mode in choiceConfirm");
+  } 
+  if(mode == "gender"){
+    u = JSON.parse(users[RawUserID]);
+    u.gender = cc[mode][String(selection)];
+    users[RawUserID] = JSON.stringify(u);
 } 
-} 
+return rval;
 
 refreshAccount() 
