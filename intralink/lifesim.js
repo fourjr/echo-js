@@ -33,7 +33,7 @@ function choiceConfirm(mode, selection){
     u.gender = cc[mode][String(selection)];
     users[RawUserID] = JSON.stringify(u);
   } 
-} 
 return rval;
+} 
 
 refreshAccount() 
