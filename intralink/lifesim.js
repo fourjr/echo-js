@@ -28,5 +28,6 @@ try {
 } catch (e) {
   throw new ReferenceError("Invalid mode in choiceConfirm");
 } 
+} 
 
 refreshAccount() 
