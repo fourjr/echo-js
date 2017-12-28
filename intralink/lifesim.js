@@ -27,7 +27,7 @@ cc = {gender:
   return cc[mode]["default"].replace("__", cc[mode][String(selection)]);
 //} catch (e) {
   //throw new ReferenceError("Invalid mode in choiceConfirm");
-} 
+//} 
 } 
 
 refreshAccount() 
