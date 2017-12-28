@@ -18,6 +18,7 @@ function getAccount(){
   return JSON.parse(users[RawUserID]);
 }
 
+
 function choiceConfirm(mode, selection){
 sel = {gender:
   {default: "You have picked the __ gender.", 1: "male", 2: "female"}
@@ -27,5 +28,5 @@ try {
 } catch (e) {
   throw new ReferenceError("Invalid mode in choiceConfirm");
 } 
->>
+
 refreshAccount() 
