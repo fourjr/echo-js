@@ -250,10 +250,10 @@ function editEnabled(change) {
 
 function checkPrefix(invoked, pref) {
   if(pref == undefined) {
-    return Content.startsWith(getChannel().prefix + invoked);
+    return hasPrefix(Content, getChannel().prefix + invoked);
   }
   else {
-    return Content.startsWith(pref + invoked);
+    return hasPrefix(Content, pref + invoked);
   }
 }
 
