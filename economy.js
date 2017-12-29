@@ -283,7 +283,7 @@ var hash = text[0]
     }
 }
 
-function formatEmbed(title, body, color) {
+function formatEmbed(title, body, color, footer_obj) {
   emb = {};
   emb.title = title;
   emb.description = body;
@@ -292,6 +292,7 @@ function formatEmbed(title, body, color) {
     name: RawUsername,
     icon_url: getIcon(RawUserID)
   };
+  emb.footer = footer_obj;
   return emb;
 }
 
