@@ -177,6 +177,14 @@ function getRandomReply(invoked, money, check) {
   return arr[Math.floor(Math.random() * arr.length)].replace("__", String(money));
 }
 
+function getGuildMemID(){
+  list = [];
+  for(i = 0; i > Server.Members.size; i++){
+    list.push(Server.Members[i].ID);
+  } 
+  return list;
+} 
+
 function refreshAccount(mention) {
   if(mention == undefined){
     ID = RawUserID;
