@@ -20,9 +20,9 @@ async def main(request):
 
 @app.route('/file/<path:str>')
 async def get_file(request, path):
-  return file('/' + path)
-  #async with aiofiles.open(path, mode='r') as f:
-    #return text(await f.read())
+  #return file('/' + path)
+  async with aiofiles.open(path, mode='r') as f:
+    return text(await f.read())
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=os.getenv('PORT'))
