@@ -179,7 +179,7 @@ function getRandomReply(invoked, money, check) {
 
 function getGuildMemID(){
   list = [];
-  for(i = 0; i > Server.Members.size; i++){
+  for(i = 0; i > Server.Members.length; i++){
     list.push(Server.Members[i].ID);
   } 
   return list;
