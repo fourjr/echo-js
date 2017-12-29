@@ -18,10 +18,10 @@ async def stop(app, loop):
 async def main(request):
   return text('hi')
 
-@app.route('/file/<path:str>')
+@app.route('/file/<path>')
 async def get_file(request, path):
   #return file('/' + path)
-  async with aiofiles.open(path, mode='r') as f:
+  async with aiofiles.open('/' + path, mode='r') as f:
     return text(await f.read())
 
 if __name__ == '__main__':
