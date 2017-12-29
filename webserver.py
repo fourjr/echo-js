@@ -1,5 +1,5 @@
 from sanic import Sanic
-from sanic.response import text, html
+from sanic.response import file, text
 import aiofiles
 import aiohttp
 import os
@@ -15,14 +15,14 @@ async def stop(app, loop):
     app.session.close()
 
 @app.route('/')
-async def main(request){
-  return text('hi!') 
+async def main(request):
+  return text('hi')
 
 @app.route('/file/<path:str>')
-async def get_file(request, path){
-  #return file('/' + path)
-  async with aiofiles.open(path, mode='r') as f:
-    return text(await f.read())
+async def get_file(request, path):
+  return file('/' + path)
+  #async with aiofiles.open(path, mode='r') as f:
+    #return text(await f.read())
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=os.getenv('PORT'))
