@@ -301,6 +301,22 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+function isStaff(UID) {
+  if (UID == undefined) {
+    UID = RawUserID;
+  }
+  addr = Address();
+  if (addr.OwnerID == UID) {
+    return true;
+  }
+  for (i = 0; i < addr.Staff.length; i++) {
+    if (addr.Staff[i] == UID) {
+      return true;
+    }
+  }
+  return false;
+}
+
 refreshAccount();
 
 
