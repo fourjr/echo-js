@@ -222,7 +222,7 @@ function checkCooldown() {
     mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
     sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
     Display = hDisplay + mDisplay + sDisplay;
-    return Display.replace(\,([^\,]*)$, " and $1");
+    return Display.replace(new RegExp(",([^\,]*)$"), " and$1");
   }
 }
 
