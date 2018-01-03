@@ -212,7 +212,8 @@ function refreshAccount(mention) {
 }
 
 function checkCooldown() { 
-    bank = JSON.parse(economy[RawUserID])  unix = Math.round((new Date()).getTime() / 1000); 
+    bank = JSON.parse(economy[RawUserID])
+    unix = Math.round((new Date()).getTime() / 1000); 
     if (bank.cooldown < unix) {   
         return false; 
     } else {   
@@ -237,7 +238,8 @@ function startCooldown(time) {
 }
 
 function editMoney(tare, value) { 
-    bank = JSON.parse(economy[RawUserID])  if (tare === 'positive') {   
+    bank = JSON.parse(economy[RawUserID])
+    if (tare === 'positive') {   
         bank.money += value; 
     } else
     if (tare === 'negative') {   

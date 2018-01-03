@@ -1,7 +1,6 @@
 from sanic import Sanic
-from sanic.response import file, text
+from sanic.response import text
 import aiofiles
-import aiohttp
 import os
 
 app = Sanic(__name__)
