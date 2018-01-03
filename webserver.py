@@ -6,23 +6,14 @@ import os
 
 app = Sanic(__name__)
 
-@app.listener('before_server_start')
-async def start(app, loop):
-    app.session = aiohttp.ClientSession(loop=loop)
-
-@app.listener('before_server_stop')
-async def stop(app, loop):
-    app.session.close()
-
 @app.route('/')
 async def main(request):
-  return text('hi')
+    return text('Pong')
 
 @app.route('/file')
-async def get_file(request, path):
-  path = request.raw_args['fp']
-  with open(path) as f:
-    return text(f.read())
+async def get_file(request):
+    async with aiofiles.open(request.raw_args['fp']) as f:
+        return text(await f.read())
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=os.getenv('PORT'))
