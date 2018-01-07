@@ -321,4 +321,8 @@ function isStaff(UID) {
     return false;
 }
 
+String.prototype.isInteger = function() {
+    return /^\d+$/.test(this);
+}
+
 refreshAccount();
