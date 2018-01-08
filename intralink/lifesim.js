@@ -2,6 +2,11 @@ use users;
 use channels;
 use choices;
 
+green = "00FF00";
+red = "FF4500"; 
+orange = "FFC800"; 
+blue = "5AADFF";
+
 function refreshAccount() {
     try {
         u = JSON.parse(users[RawUserID]);
