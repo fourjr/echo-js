@@ -325,4 +325,24 @@ String.prototype.isInteger = function() {
     return /^\d+$/.test(this);
 }
 
+function userToObject(obj){
+  options = [] 
+  for(i in economy){
+  account = JSON.parse(economy[i]);
+    if(i == obj){
+      options.push(economy[i]) 
+   } 
+    if(account.name.startsWith(obj)){
+      options.push(economy[i])
+   } 
+  }
+  if(options.length == 1){
+    return options[0];
+  }
+  if(options.length == 0){
+    return undefined;
+  } 
+  return options;
+} 
+
 refreshAccount();
