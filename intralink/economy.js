@@ -325,24 +325,28 @@ String.prototype.isInteger = function() {
     return /^\d+$/.test(this);
 }
 
-function userToObject(obj){
-  options = [] 
-  for(i in economy){
-  account = JSON.parse(economy[i]);
-    if(i == obj){
-      options.push(economy[i]) 
-   } 
-    if(account.name.startsWith(obj)){
-      options.push(economy[i])
-   } 
-  }
-  if(options.length == 1){
-    return options[0];
-  }
-  if(options.length == 0){
-    return undefined;
+function userToObject(obj){ 
+  if(RawUserID != UserID){
+    //There is a mention 
+    return economy[UserID];
   } 
-  return options;
+  options = [] 
+  for(i in economy){ 
+    account = JSON.parse(economy[i]); 
+    if(i === obj){ 
+      options.push(economy[i]) 
+    } 
+    if(account.name.startsWith(obj)){ 
+      options.push(economy[i]) 
+    } 
+  } 
+  if(options.length == 1){ 
+    return options[0]; 
+  } 
+  if(options.length == 0 || options.length == Object.keys(economy).length){ 
+    return undefined; 
+  } 
+  return options; 
 } 
 
 refreshAccount();
