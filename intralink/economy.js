@@ -328,8 +328,12 @@ String.prototype.isInteger = function() {
 function userToObject(obj){ 
   //Given an ID or name, return a list of [ID, economy status]
   if(obj == "<@" + UserID + ">"){
-    //There is a mention 
-    return [UserID, economy[UserID]];
+    //There is a mention
+    if(economy.hasownproperty(UserID)){
+      return [UserID, economy[UserID]];
+    } else {
+      return undefined 
+    } 
   } 
   options = [] 
   len = 0
