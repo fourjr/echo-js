@@ -326,24 +326,27 @@ String.prototype.isInteger = function() {
 }
 
 function userToObject(obj){ 
+  //Given an ID or name, return a list of [ID, economy status]
   if(obj == "<@" + UserID + ">"){
     //There is a mention 
-    return economy[UserID];
+    return [UserID, economy[UserID]];
   } 
   options = [] 
+  len = 0
   for(i in economy){ 
+    len += 1
     account = JSON.parse(economy[i]); 
     if(i == obj){ 
-      options.push(economy[i]) 
+      options.push([i, economy[i]]) 
     } 
     if(account.name.startsWith(obj)){ 
-      options.push(economy[i]) 
+      options.push([i, economy[i]]) 
     } 
   } 
   if(options.length == 1){ 
-    return options[0]; 
+    return options[0] ; 
   } 
-  if(options.length == 0 || options.length == Object.keys(economy).length){ 
+  if(options.length == 0 || options.length == len){ 
     return undefined; 
   } 
   return options; 
