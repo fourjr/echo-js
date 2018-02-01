@@ -326,14 +326,14 @@ String.prototype.isInteger = function() {
 }
 
 function userToObject(obj){ 
-  if(RawUserID != UserID){
+  if(obj == "<@" + UserID + ">"){
     //There is a mention 
     return economy[UserID];
   } 
   options = [] 
   for(i in economy){ 
     account = JSON.parse(economy[i]); 
-    if(i === obj){ 
+    if(i == obj){ 
       options.push(economy[i]) 
     } 
     if(account.name.startsWith(obj)){ 
