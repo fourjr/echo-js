@@ -329,7 +329,7 @@ function userToObject(obj){
   //Given an ID or name, return a list of [ID, economy status]
   if(obj == "<@" + UserID + ">"){
     //There is a mention
-    if(economy.hasownproperty(UserID)){
+    if(economy.hasOwnProperty(UserID)){
       return [UserID, economy[UserID]];
     } else {
       return undefined 
