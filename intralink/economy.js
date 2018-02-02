@@ -127,12 +127,33 @@ if (!Array.prototype.includes) {
     });
 }
 
-function getAccount(mention) { 
-    if (mention == undefined) {   
-        return JSON.parse(economy[RawUserID]); 
-    } else {   
-        return JSON.parse(economy[UserID]); 
+function getAccount(user) { 
+    if (user == undefined) {
+        username = RawUsername
+        user = RawUserID 
     }
+    else {
+        username = undefined 
+        for (i in Server.Members) {
+            if (Server.Members[i].User.ID == user) {
+              username = Server.Members[i].User.Username
+            } 
+        } 
+        if (username == undefined) {
+          throw new ReferenceError("Invalid user passed into refreshAccount") 
+        } 
+    } 
+
+    if(!economy.hasOwnProperty(user)){
+        def = {    
+            name: username,
+             money: 0,
+             cooldown: 0   
+        }
+        economy[user] = JSON.stringify(def) 
+        return def
+    } 
+    return JSON.parse(economy[user])
 }
 
 function getChannel(id) {
@@ -143,22 +164,23 @@ function getChannel(id) {
         }
         id = Channel.ID;
     } 
-    try {   
+    if (channels.hasOwnProperty(id)) {   
         channel = JSON.parse(channels[id]);
         channel.name = Channel.Name; 
-    } catch (e) {
+    } 
+    else {
         if (guildChanID.includes(channels[id])) {
             return getChannel(channels[Channel.ID]);
         }   
         channel = {     
             crime: true,
-                 work: true,
-                 bal: true,
-                 prefix: "?",
+            work: true,
+            bal: true,
+            prefix: "?",
             name: Channel.Name   
-        };   
-        channels[Channel.ID] = JSON.stringify(channel); 
-    } 
+        }
+    }
+    channels[Channel.ID] = JSON.stringify(channel); 
     return channel;
 }
 
@@ -188,26 +210,36 @@ function getGuildMemID() {
     return list;
 }
 
-function refreshAccount(mention) {
-    if (mention == undefined) {
+function refreshAccount(user) {
+    if (user == undefined) {
         ID = RawUserID;
         name = RawUsername;
     } else {
-        ID = UserID;
-        name = Username;
+        username = undefined 
+        for (i in Server.Members) {
+            if (Server.Members[i].User.ID == user) {
+              username = Server.Members[i].User.Username
+            } 
+        } 
+        if (username == undefined) {
+          throw new ReferenceError("Invalid user passed into refreshAccount") 
+        } 
+        ID = user
+        name = username
     }
 
-    try {   
-        bank = JSON.parse(economy[ID]); 
-        bank.name = name
-    } catch (e) {  
-        def = {    
+    if (economy.hasOwnProperty(ID) {   
+        account = JSON.parse(economy[ID]);
+        account.name = name
+    }
+    else {  
+        account = {    
             name: name,
-                 money: 0,
-                 cooldown: 0   
-        };   
-        economy[ID] = JSON.stringify(def); 
+             money: 0,
+             cooldown: 0   
+        }
     } 
+    economy[ID] = JSON.stringify(account) 
     return;
 }
 
