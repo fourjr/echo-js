@@ -228,7 +228,7 @@ function refreshAccount(user) {
         name = username
     }
 
-    if (economy.hasOwnProperty(ID) {   
+    if (economy.hasOwnProperty(ID)) {   
         account = JSON.parse(economy[ID]);
         account.name = name
     }
