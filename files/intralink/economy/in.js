@@ -291,6 +291,9 @@ function editEnabled(change) {
 }
 
 function checkPrefix(invoked, pref) {
+    if(invoked == "prefix"){
+        return checkPrefix(invoked, "?")
+    }
     if(pref == undefined) {
         return HasPrefix(Content, getChannel().prefix + invoked);
     } else {
@@ -387,4 +390,4 @@ function userToObject(obj) {
 refreshAccount();
 
 trigger = Trigger.replace("&", "").replace(" {params}", "")
-if(checkPrefix(trigger) || (trigger == 'prefix' && Content.startsWith("?prefix"))){
+if(checkPrefix(trigger)){
