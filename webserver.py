@@ -1,4 +1,5 @@
 from japronto import Application
+import os
 import aiofiles
 
 async def main(request):
@@ -12,4 +13,4 @@ async def get_file(request):
 app = Application()
 app.router.add_route('/', main)
 app.router.add_route('/file', get_file)
-app.run(debug=True)
+app.run(port=os.getenv('PORT'), debug=True)
