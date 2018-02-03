@@ -11,7 +11,7 @@ async def get_file(request):
         fp = 'files/' + request.query['fp']
         async with aiofiles.open(fp) as f:
             return request.Response(text=await f.read())
-    except FileNotFoundError:
+    except (FileNotFoundError, NotADirectoryError):
         return request.Response(text=f'No such file found: {fp}', code=404)
 
 app = Application()
