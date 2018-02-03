@@ -7,7 +7,7 @@ async def main(request):
 
 async def get_file(request):
     '''Gets a file'''
-    async with aiofiles.open('files/' + request.raw_args['fp']) as f:
+    async with aiofiles.open('files/' + request.query['fp']) as f:
         return request.Response(text=await f.read())
 
 app = Application()
