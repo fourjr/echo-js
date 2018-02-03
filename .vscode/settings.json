@@ -1,3 +1,4 @@
 {
-    "restructuredtext.confPath": "e:\\Programming\\Git\\echo-js"
-}
+    "restructuredtext.confPath": "e:\\Programming\\Git\\echo-js",
+    "git.ignoreLimitWarning": true
+  }

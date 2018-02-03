@@ -387,4 +387,4 @@ function userToObject(obj) {
 refreshAccount();
 
 trigger = Trigger.replace("&", "").replace(" {params}", "")
-if(checkPrefix(trigger) || trigger == 'prefix'){
+if(checkPrefix(trigger) || (trigger == 'prefix' && Content.startsWith("?prefix"))){
