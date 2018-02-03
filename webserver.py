@@ -7,8 +7,12 @@ async def main(request):
 
 async def get_file(request):
     '''Gets a file'''
-    async with aiofiles.open('files/' + request.query['fp']) as f:
-        return request.Response(text=await f.read())
+    try:
+        fp = 'files/' + request.query['fp']
+        async with aiofiles.open(fp) as f:
+            return request.Response(text=await f.read())
+    except FileNotFoundError:
+        return request.Response(text=f'No such file found: {fp}', code=404)
 
 app = Application()
 app.router.add_route('/', main)
