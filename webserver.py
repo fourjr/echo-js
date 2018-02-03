@@ -17,4 +17,4 @@ async def get_file(request):
 app = Application()
 app.router.add_route('/', main)
 app.router.add_route('/file', get_file)
-app.run(port=int(os.getenv('PORT')), debug=True)
+app.run(port=int(os.getenv('PORT')))
