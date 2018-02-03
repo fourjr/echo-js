@@ -1,18 +1,15 @@
-from sanic import Sanic
-from sanic.response import text
+from japronto import Application
 import aiofiles
-import os
 
-app = Sanic(__name__)
-
-@app.route('/')
 async def main(request):
-    return text('Pong')
+    return request.Response(text='Pong')
 
-@app.route('/file')
 async def get_file(request):
-    async with aiofiles.open(request.raw_args['fp']) as f:
-        return text(await f.read())
+    '''Gets a file'''
+    async with aiofiles.open('files/' + request.raw_args['fp']) as f:
+        return request.Response(text=await f.read())
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=os.getenv('PORT'))
+app = Application()
+app.router.add_route('/', main)
+app.router.add_route('/file', get_file)
+app.run(debug=True)
