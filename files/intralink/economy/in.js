@@ -291,8 +291,8 @@ function editEnabled(change) {
 }
 
 function checkPrefix(invoked, pref) {
-    if(invoked == "prefix"){
-        return checkPrefix(invoked, "?")
+    if(invoked == "?prefix"){
+        return checkPrefix(invoked.replace("?", ""), "?")
     }
     if(pref == undefined) {
         return HasPrefix(Content, getChannel().prefix + invoked);
