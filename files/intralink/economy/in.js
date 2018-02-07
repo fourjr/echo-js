@@ -358,6 +358,7 @@ String.prototype.isInteger = function() {
 
 function userToObject(obj) {
     //Given an ID or name, return a list of [ID, economy status]
+    obj = obj.toLowerCase()
     if(obj == "<@" + UserID + ">") {
         //There is a mention
         if(economy.hasOwnProperty(UserID)) {
@@ -371,10 +372,10 @@ function userToObject(obj) {
     for(i in economy) {
         len += 1
         account = JSON.parse(economy[i]);
-        if(i == obj) {
+        if(i.toLowerCase() == obj) {
             options.push([i, account]) 
         }
-        if(account.name.startsWith(obj)) {
+        if(account.name.toLowerCase().startsWith(obj)) {
             options.push([i, account]) 
         }
     }
