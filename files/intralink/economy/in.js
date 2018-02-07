@@ -295,10 +295,10 @@ function checkPrefix(invoked, pref) {
         return checkPrefix(invoked.replace("?", ""), "?")
     }
     if(pref == undefined) {
-        return HasPrefix(Content, getChannel().prefix + invoked);
-    } else {
-        return HasPrefix(Content, pref + invoked);
+        pref = getChannel().prefix
     }
+    Params = Params.replace(pref, "") 
+    return HasPrefix(Content, pref + invoked);
 }
 
 function getIcon(id) {
