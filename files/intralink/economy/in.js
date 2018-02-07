@@ -372,10 +372,10 @@ function userToObject(obj) {
         len += 1
         account = JSON.parse(economy[i]);
         if(i == obj) {
-            options.push([i, account])) 
+            options.push([i, account]) 
         }
         if(account.name.startsWith(obj)) {
-            options.push([i, account])
+            options.push([i, account]) 
         }
     }
     if(options.length == 1) {
