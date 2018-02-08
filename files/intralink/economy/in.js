@@ -37,34 +37,29 @@ Other money related commands\n\
 -----------------------------------\n\
 //These don't have a set cooldown!\n\
 \n\
-[p]bal\n\
-Shows the whole world how rich or poor you are\n\
+[p]bal [user]\n\
+Shows the whole world how rich or poor you are, or view another's user's balance!\n\
 \n\
 [p]leaderboard\n\
 Are you the biggest millionaire in the whole of discord? Find out here.\n\
+[p]pay <user> <amount>\n\
+Feeling kind today? Here's what you do!\n\
 \n\
 Miscellaneous Commands\n\
 -----------------------------------\n\
 //All settings are channel based, this means that you can have different prefixes per channels you lock this intralink to, or even different commands enabled per channel.\n\
 \n\
+[p]suggest <suggestion> \n\
+Suggests a feature for the Intralink to me!\n\
 [p]prefix \n\
 • Requires Manage Server permission\n\
 Hate the default prefix as the question mark? Change it using this command.\n\
 Note: Some prefixes are protected, for example, the prefix you set Echo to, and some others. It will return an error message.\n\
-\n\
-[p]toggle \n\
-• Requires Manage Server permission\n\
-If you want your whole server to work hard to earn money, disable crime!\n\
-Note: Some commands are protected, and will return an error message if you try to toggle them.\n\
-\n\
 [p]help\n\
 Shows this rather long message that contains a ton of information you most likely won't read but will need\n\
 \n\
-Help! I broke something! I found a bug! I forgot my prefix! I have suggestions!\n\
------------------------------------\n\
-Drop me a DM, 4JR#2713, if you need a mutual server, join Echo's official server.\n\
-\n\
-https://discord.gg/7JMJjGk\n\
+Time to get earning!
+
 ```"
 
 //startsWith
