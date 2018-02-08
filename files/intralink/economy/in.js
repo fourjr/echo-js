@@ -58,8 +58,8 @@ Note: Some prefixes are protected, for example, the prefix you set Echo to, and 
 [p]help\n\
 Shows this rather long message that contains a ton of information you most likely won't read but will need\n\
 \n\
-Time to get earning!
-
+Time to get earning!\
+\
 ```"
 
 //startsWith
