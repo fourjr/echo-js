@@ -1,5 +1,6 @@
 from japronto import Application
-import os
+import io
+import aiohttp 
 import aiofiles
 
 async def main(request):
@@ -7,6 +8,8 @@ async def main(request):
 
 async def get_file(request):
     '''Gets a file'''
+    if app.session is None:
+        app.session = aiohttp.ClientSession(loop=app.loop)
     try:
         fp = 'files/' + request.query['fp']
         async with aiofiles.open(fp) as f:
@@ -14,7 +17,16 @@ async def get_file(request):
     except (FileNotFoundError, NotADirectoryError):
         return request.Response(text=f'No such file found: {fp}', code=404)
 
+async def hastebin(request):
+    '''POSTs to the Hastebin API'''
+    if app.session is None:
+        app.session = aiohttp.ClientSession(loop=app.loop)
+    async with app.session.post('https://www.hastebin.com/documents', data=request.query['data']) as resp:
+        return request.Response(json=await resp.json())
+
 app = Application()
+app.session = None
 app.router.add_route('/', main)
+app.router.add_route('/hastebin', hastebin) 
 app.router.add_route('/file', get_file)
 app.run(port=int(os.getenv('PORT')))
