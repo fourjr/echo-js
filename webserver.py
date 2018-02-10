@@ -2,6 +2,7 @@ from japronto import Application
 import os
 import aiohttp 
 import aiofiles
+import base64 
 
 async def main(request):
     return request.Response(text='Pong')
@@ -21,7 +22,7 @@ async def hastebin(request):
     '''POSTs to the Hastebin API'''
     if app.session is None:
         app.session = aiohttp.ClientSession(loop=app.loop)
-    async with app.session.post('https://www.hastebin.com/documents', data=request.query['data']) as resp:
+    async with app.session.post('https://www.hastebin.com/documents', data=base64.b64decode(request.query['data']).decode('utf-8'))as resp:
         return request.Response(json=await resp.json())
 
 app = Application()
