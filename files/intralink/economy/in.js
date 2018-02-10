@@ -21,7 +21,7 @@ The prefix can be changed, and is default set to ?, you may refer to on instruct
 \n\
 Accounts for users are automatically created once they do any command in the system.\n\
 \n\
-There is a 4 hour global cooldown after a user does any command in the next category.\n\
+There is a random global cooldown (below an hour) after a user does any command in the next category.\n\
 \n\
 Ways to Earn Money:\n\
 -----------------------------------\n\
@@ -40,12 +40,8 @@ Other money related commands\n\
 [p]bal [user]\n\
 Shows the whole world how rich or poor you are, or view another's user's balance!\n\
 \n\
-[p]leaderboard [option]\n\
+[p]leaderboard\n\
 Are you the biggest millionaire in the whole of discord? Find out here.\n\
-You can use it like: [p]leaderboard server [page]\n\
-or [p]leaderboard [page]\n\
-or just let it default to page 1!\n\
-\n\
 [p]pay <user> <amount>\n\
 Feeling kind today? Here's what you do!\n\
 \n\
@@ -55,12 +51,10 @@ Miscellaneous Commands\n\
 \n\
 [p]suggest <suggestion> \n\
 Suggests a feature for the Intralink to me!\n\
-\n\
 [p]prefix \n\
 • Requires Manage Server permission\n\
 Hate the default prefix as the question mark? Change it using this command.\n\
 Note: Some prefixes are protected, for example, the prefix you set Echo to, and some others. It will return an error message.\n\
-\n\
 [p]help\n\
 Shows this rather long message that contains a ton of information you most likely won't read but will need\n\
 \n\
