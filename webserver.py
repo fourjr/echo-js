@@ -8,8 +8,6 @@ async def main(request):
 
 async def get_file(request):
     '''Gets a file'''
-    if app.session is None:
-        app.session = aiohttp.ClientSession(loop=app.loop)
     try:
         fp = 'files/' + request.query['fp']
         async with aiofiles.open(fp) as f:
