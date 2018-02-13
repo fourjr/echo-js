@@ -1,7 +1,7 @@
 from japronto import Application
 import os
 import aiohttp 
-import aiofiles
+import aiofiles 
 import base64
 
 async def main(request):
@@ -32,6 +32,7 @@ async def b64(request):
                 return request.Response(json={'response':'Invalid Base64 String to decode'}, status=400)
         else:
              return request.Response(json={'response':'Unknown mode'}, status=400)
+    return request.Response(json={'response':'Invalid Call'}, status=400)
 
 app = Application()
 app.router.add_route('/', main)
