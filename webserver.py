@@ -16,7 +16,7 @@ async def get_file(request):
     except (FileNotFoundError, NotADirectoryError):
         return request.Response(text=f'No such file found: {fp}', code=404)
 
-// Other useful stuff //
+## Other useful stuff ##
 
 async def b64(request):
     '''Encodes and decodes your given text'''
