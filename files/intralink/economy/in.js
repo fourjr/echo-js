@@ -309,8 +309,8 @@ function checkPrefix(invoked, pref) {
     if(pref == undefined) {
         pref = getChannel().prefix
     }
-    Params = Params.replace(pref, "") 
-    return HasPrefix(Content, pref + invoked);
+    Params = Params.replace(pref, "")
+    return HasPrefix(Content, pref + invoked + " ");
 }
 
 function getIcon(id) {
