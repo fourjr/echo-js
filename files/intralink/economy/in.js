@@ -139,6 +139,21 @@ if(!Array.prototype.includes) {
     });
 }
 
+//String.includes
+if (!String.prototype.includes) { 
+    String.prototype.includes = function(search, start) {
+        'use strict';
+        if (typeof start !== 'number') {
+            start = 0; 
+        } 
+        if (start + search.length > this.length) { 
+            return false;
+        } else { 
+             return this.indexOf(search, start) !== -1; 
+        } 
+    }; 
+}
+
 function getAccount(user) {
     if(user == undefined) {
         username = RawUsername
@@ -310,7 +325,10 @@ function checkPrefix(invoked, pref) {
         pref = getChannel().prefix
     }
     Params = Params.replace(pref, "")
-    return HasPrefix(Content, pref + invoked + " ");
+    if(Trigger.includes("{params}")){
+        return HasPrefix(Content, pref + invoked + " ");
+    } 
+    return HasPrefix(Content, pref + invoked);
 }
 
 function getIcon(id) {
