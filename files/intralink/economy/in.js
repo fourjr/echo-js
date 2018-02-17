@@ -437,7 +437,7 @@ prefixed = checkPrefix(trigger)
 
 if(!prefixed){
     if(aliases.hasOwnProperty(trigger)){
-        for(i = 0; i < aliases[trigger].size - 1; i++){
+        for(i = 0; i < aliases[trigger].length - 1; i++){
             if(checkPrefix(aliases[trigger][i])){
                 prefixed = true 
                 break 
