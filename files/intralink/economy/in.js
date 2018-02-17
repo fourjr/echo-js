@@ -6,6 +6,18 @@ red = "FF4500";
 orange = "FFC800";
 blue = "5AADFF";
 
+aliases = {
+    bal: [
+        "money"
+    ],
+    pay: [
+       "give-money"
+    ],
+    crime: [
+        "heist"
+    ]
+}
+
 reserved = ["<@249891250117804032>", "."];
 
 work = [
@@ -421,4 +433,17 @@ function userToObject(obj) {
 refreshAccount();
 
 trigger = Trigger.replace("&", "").replace(" {params}", "")
-if(checkPrefix(trigger)){
+prefixed = checkPrefix(trigger)
+
+if(!prefixed){
+    if(aliases.hasOwnProperty(trigger)){
+        for(i = 0; i < aliases[trigger].size - 1; i++){
+            if(checkPrefix(aliases[trigger][i])){
+                prefixed = true 
+                break 
+            }
+        }
+    }
+}
+
+if(prefixed){
