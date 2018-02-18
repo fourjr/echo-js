@@ -430,8 +430,6 @@ function userToObject(obj) {
     return options;
 }
 
-refreshAccount();
-
 trigger = Trigger.replace("&", "").replace(" {params}", "")
 prefixed = checkPrefix(trigger)
 /*
@@ -445,3 +443,4 @@ if(!prefixed && aliases.hasOwnProperty(trigger)){
 }
 */
 if(prefixed){
+    refreshAccount();
