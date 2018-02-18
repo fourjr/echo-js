@@ -434,7 +434,7 @@ refreshAccount();
 
 trigger = Trigger.replace("&", "").replace(" {params}", "")
 prefixed = checkPrefix(trigger)
-
+/*
 if(!prefixed && aliases.hasOwnProperty(trigger)){
     for(i = 0; i < aliases[trigger].length - 1; i++){
         if(checkPrefix(aliases[trigger][i])){
@@ -443,5 +443,5 @@ if(!prefixed && aliases.hasOwnProperty(trigger)){
         }
     }
 }
-
+*/
 if(prefixed){
