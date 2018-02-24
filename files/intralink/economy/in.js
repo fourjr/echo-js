@@ -7,13 +7,42 @@ red = "FF4500";
 orange = "FFC800";
 blue = "5AADFF";
 
+aliases = {
+    bal: [
+        "money"
+    ],
+    pay: [
+       "give-money"
+    ],
+    crime: [
+        "heist"
+    ]
+}
+
 reserved = ["<@249891250117804032>", "."];
 
-work = ["You found $__ on the floor!", "Your boss decided to give you a bonus of $__ as you were working hard!", "You worked as a chef and earned $__!", "You had a successful business proposal and earned $__ from it!"];
+work = [
+"You found $__ on the floor!",
+"Your boss decided to give you a bonus of $__ as you were working hard!",
+"You worked as a chef and earned $__!",
+"You had a successful business proposal and earned $__ from it!"
+];
 
-robpos = ["You broke into someone's house and stole his $__", "You rob a random passerby and manage to steal $__!", "You saw a account and seized the opportunity. You earned $__ from the heist!", "You hacked Echo and gave yourself $__", "You bribed a staff member to add $__ to your account and it worked!"];
+robpos = [
+"You broke into someone's house and stole his $__",
+"You rob a random passerby and manage to steal $__!",
+"You saw a account and seized the opportunity. You earned $__ from the heist!",
+"You hacked Echo and gave yourself $__",
+"You bribed a staff member to add $__ to your account and it worked!"
+];
 
-robneg = ["You try to rob a shop but got caught and fined $__", "You were caught vandalizing and got fined $__", "You hacked into the white house database but got caught. You lose $__", "You were caught stealing cookies and got fined $__", "You lost a bet against someone and lost $__"];
+robneg = [
+"You try to rob a shop but got caught and fined $__",
+"You were caught vandalizing and got fined $__",
+"You hacked into the white house database but got caught. You lose $__",
+"You were caught stealing cookies and got fined $__",
+"You lost a bet against someone and lost $__"
+];
 
 helpMessage = "```md\n\
 Important Notes:\n\
@@ -22,7 +51,7 @@ The prefix can be changed, and is default set to ?, you may refer to on instruct
 \n\
 Accounts for users are automatically created once they do any command in the system.\n\
 \n\
-There is a 4 hour global cooldown after a user does any command in the next category.\n\
+There is a random global cooldown (below an hour) after a user does any command in the next category.\n\
 \n\
 Ways to Earn Money:\n\
 -----------------------------------\n\
@@ -38,34 +67,29 @@ Other money related commands\n\
 -----------------------------------\n\
 //These don't have a set cooldown!\n\
 \n\
-[p]bal\n\
-Shows the whole world how rich or poor you are\n\
+[p]bal [user]\n\
+Shows the whole world how rich or poor you are, or view another's user's balance!\n\
 \n\
 [p]leaderboard\n\
 Are you the biggest millionaire in the whole of discord? Find out here.\n\
+[p]pay <user> <amount>\n\
+Feeling kind today? Here's what you do!\n\
 \n\
 Miscellaneous Commands\n\
 -----------------------------------\n\
 //All settings are channel based, this means that you can have different prefixes per channels you lock this intralink to, or even different commands enabled per channel.\n\
 \n\
+[p]suggest <suggestion> \n\
+Suggests a feature for the Intralink to me!\n\
 [p]prefix \n\
 • Requires Manage Server permission\n\
 Hate the default prefix as the question mark? Change it using this command.\n\
 Note: Some prefixes are protected, for example, the prefix you set Echo to, and some others. It will return an error message.\n\
-\n\
-[p]toggle \n\
-• Requires Manage Server permission\n\
-If you want your whole server to work hard to earn money, disable crime!\n\
-Note: Some commands are protected, and will return an error message if you try to toggle them.\n\
-\n\
 [p]help\n\
 Shows this rather long message that contains a ton of information you most likely won't read but will need\n\
 \n\
-Help! I broke something! I found a bug! I forgot my prefix! I have suggestions!\n\
------------------------------------\n\
-Drop me a DM, 4JR#2713, if you need a mutual server, join Echo's official server.\n\
-\n\
-https://discord.gg/7JMJjGk\n\
+Time to get earning!\
+\
 ```"
 
 //startsWith
@@ -126,6 +150,21 @@ if(!Array.prototype.includes) {
             return false;
         }
     });
+}
+
+//String.includes
+if (!String.prototype.includes) { 
+    String.prototype.includes = function(search, start) {
+        'use strict';
+        if (typeof start !== 'number') {
+            start = 0; 
+        } 
+        if (start + search.length > this.length) { 
+            return false;
+        } else { 
+             return this.indexOf(search, start) !== -1; 
+        } 
+    }; 
 }
 
 function getAccount(user) {
@@ -296,10 +335,13 @@ function checkPrefix(invoked, pref) {
         return checkPrefix(invoked.replace("?", ""), "?")
     }
     if(pref == undefined) {
-        return HasPrefix(Content, getChannel().prefix + invoked);
-    } else {
-        return HasPrefix(Content, pref + invoked);
+        pref = getChannel().prefix
     }
+    Params = Params.replace(pref, "")
+    if(Trigger.includes("{params}")){
+        return HasPrefix(Content, pref + invoked + " ");
+    } 
+    return HasPrefix(Content, pref + invoked);
 }
 
 function getIcon(id) {
@@ -359,6 +401,7 @@ String.prototype.isInteger = function() {
 
 function userToObject(obj) {
     //Given an ID or name, return a list of [ID, economy status]
+    obj = obj.toLowerCase()
     if(obj == "<@" + UserID + ">") {
         //There is a mention
         if(economy.hasOwnProperty(UserID)) {
@@ -372,11 +415,11 @@ function userToObject(obj) {
     for(i in economy) {
         len += 1
         account = JSON.parse(economy[i]);
-        if(i == obj) {
-            options.push([i, economy[i]])
+        if(i.toLowerCase() == obj) {
+            options.push([i, account]) 
         }
-        if(account.name.startsWith(obj)) {
-            options.push([i, economy[i]])
+        if(account.name.toLowerCase().startsWith(obj)) {
+            options.push([i, account]) 
         }
     }
     if(options.length == 1) {
@@ -388,7 +431,17 @@ function userToObject(obj) {
     return options;
 }
 
-refreshAccount();
-
 trigger = Trigger.replace("&", "").replace(" {params}", "")
-if(checkPrefix(trigger)){
+prefixed = checkPrefix(trigger)
+/*
+if(!prefixed && aliases.hasOwnProperty(trigger)){
+    for(i = 0; i < aliases[trigger].length - 1; i++){
+        if(checkPrefix(aliases[trigger][i])){
+            prefixed = true
+            break
+        }
+    }
+}
+*/
+if(prefixed){
+    refreshAccount();
