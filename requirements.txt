@@ -1,4 +1,0 @@
-aiohttp
-aiofiles
-sanic
-git+https://github.com/squeaky-pl/japronto
