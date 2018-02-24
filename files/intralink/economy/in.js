@@ -1,5 +1,6 @@
 use economy;
 use channels;
+use blacklist;
 
 green = "00FF00";
 red = "FF4500";
