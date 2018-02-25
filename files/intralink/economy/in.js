@@ -274,6 +274,7 @@ function refreshAccount(user) {
             name: name,
             money: 0,
             cooldown: 0
+            inventory: {} 
         }
     }
     economy[ID] = JSON.stringify(account)
