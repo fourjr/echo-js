@@ -1,1 +1,3 @@
-*.ars
+.vscode/
+
+files/intralink/economy/*.ars

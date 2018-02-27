@@ -1,0 +1,298 @@
+[CONFIG]
+//This is where you configure your own system! 1 stands for enabled, and 0 is disabled.
+    warn = 1
+    kick = 1
+    ban = 1
+
+//Auto Moderation
+    block_youtube_links = 1
+    block_twitch_links = 1
+    block_twitter_links = 1
+    block_discord_links = 1
+
+    //The default setting at 80 would delete messages with more than 80% capital letters. 0 to disable.
+        block_caps_limit = 80
+    //The default setting at 10 would only allow 10 mentions/message. 0 to disable.
+        block_mass_mentions_limit = 10
+
+//Please replace the below with Channel IDs
+    mod_log_channel = 0
+//This is used for logging of auto moderation
+    bot_log_channel = 0
+//This is your Moderator role name
+    mod_role = Moderator
+
+prefix = ?
+[/CONFIG]
+
+[CREATE DB:modTemp]
+[CREATE DB:modCases]
+
+[TASK]
+for::modConfig::DEFUNCT
+ban=#ef5350
+kick=#ff8d01
+warn=#ffeb3b
+[/TASK]
+
+&ban {params}={init}
+:break unless $ban == 1
+:break unless params.starts_with=$prefix
+:break unless user.has_role(mod_role) >> You are not a moderator!
+{mention:You need to mention someone!}
+{replace:$prefix}{with:}
+
+{ban}
+{ars:moderationMODLOG}
+{self} has banned {/user}.
+
+[#CONTINUE#]
+
+&kick {params}={init}
+:break unless $kick == 1
+:break unless params.starts_with=$prefix
+:break unless user.has_role(mod_role) >> You are not a moderator!
+{mention:You need to mention someone!}
+{replace:$prefix}{with:}
+
+{kick}
+{ars:moderationMODLOG}
+{self} has kicked {/user}.
+
+[#CONTINUE#]
+
+&warn {params}={init}
+:break unless $warn == 1
+:break unless params.starts_with=$prefix
+:break unless user.has_role(mod_role) >> You are not a moderator!
+{mention:You need to mention someone!}
+{replace:$prefix}{with:}
+
+{ars:moderationMODLOG}
+{self} has warned {/user}.
+
+[#CONTINUE]
+
+&{:}(http|https)://(www.|)(youtu)(.be|be.com/watch)|(youtube.com/)(user|c)={init}
+:break unless $block_youtube_links == 1
+:break unless user.has_role(mod_role) >> 
+    {user}, please do not advertise in this server. {del:0.2}
+    {ars:moderationBOTLOG}
+<<
+
+[#CONTINUE#]
+
+&{:}(http|https)://(www.|)(youtu)(.be|be.com/watch)|(youtube.com/)(user|c)={init}
+:break unless $block_youtube_links == 1
+:break unless user.has_role(mod_role) >>
+    {user}, please do not advertise in this server. {del:0.2}
+    {ars:moderationBOTLOG}
+<<
+
+[#CONTINUE#]
+
+&{:}(http|https)://(www.|)(twitch.tv/.)={init}
+:break unless $block_twitch_links == 1
+:break unless user.has_role(mod_role) >>
+    {user}, please do not advertise in this server. {del:0.2}
+    {ars:moderationBOTLOG}
+<<
+
+[#CONTINUE#]
+
+&{:}(http|https)://(www.|)(twiter.com/.|t.co)={init}
+:break unless $block_twitter_links == 1
+:break unless user.has_role(mod_role) >>
+    {user}, please do not advertise in this server. {del:0.2}
+    {ars:moderationBOTLOG}
+<<
+
+[#CONTINUE#]
+
+&{:}(discord.)(io|gg)|(discordapp.com/invite)={init}
+:break unless $block_discord_links == 1
+:break unless user.has_role(mod_role) >>
+    {user}, please do not advertise in this server. {del:0.2}
+    {ars:moderationBOTLOG}
+<<
+
+[#CONTINUE#]
+
+<<HasMentions?>>={init}
+:break unless $block_mass_mentions_limit != 0
+:break unless user.has_role(mod_role) >>
+    Count.{mentioncount} > $block_mass_mentions_limit?:{user}, please do not mass ping users. {del:0.2}
+    Response.nil?:{stop}
+<<
+
+[#CONTINUE#]
+
+<<HasCaps1?>>={init}
+//1-10
+:break unless $block_caps_limit > 0
+:break unless $block_caps_limit < 10
+:break unless user.has_role(mod_role) >>
+    {user}, please do not use that many capital letters.{del:0.2}
+    {ars:moderationBOTLOG}
+<<
+
+[#CONTINUE#]
+
+<<HasCaps11?>>={init}
+//11-20
+:break unless $block_caps_limit > 10
+:break unless $block_caps_limit < 20
+:break unless user.has_role(mod_role) >>
+    {user}, please do not use that many capital letters.{del:0.2}
+    {ars:moderationBOTLOG}
+<<
+
+[#CONTINUE#]
+
+<<HasCaps21?>>={init}
+//21-30
+:break unless $block_caps_limit > 20
+:break unless $block_caps_limit < 30
+:break unless user.has_role(mod_role) >>
+    {user}, please do not use that many capital letters.{del:0.2}
+    {ars:moderationBOTLOG}
+<<
+
+[#CONTINUE#]
+
+<<HasCaps31?>>={init}
+//31-40
+:break unless $block_caps_limit > 30
+:break unless $block_caps_limit < 40
+:break unless user.has_role(mod_role) >>
+    {user}, please do not use that many capital letters.{del:0.2}
+    {ars:moderationBOTLOG}
+<<
+
+[#CONTINUE#]
+
+<<HasCaps41?>>={init}
+//41-50
+:break unless $block_caps_limit > 40
+:break unless $block_caps_limit < 50
+:break unless user.has_role(mod_role) >>
+    {user}, please do not use that many capital letters.{del:0.2}
+    {ars:moderationBOTLOG}
+<<
+
+[#CONTINUE#]
+
+<<HasCaps51?>>={init}
+//51-60
+:break unless $block_caps_limit > 50
+:break unless $block_caps_limit < 60
+:break unless user.has_role(mod_role) >>
+    {user}, please do not use that many capital letters.{del:0.2}
+    {ars:moderationBOTLOG}
+<<
+
+[#CONTINUE#]
+
+<<HasCaps61?>>={init}
+//61-70
+:break unless $block_caps_limit > 60
+:break unless $block_caps_limit < 70
+:break unless user.has_role(mod_role) >>
+    {user}, please do not use that many capital letters.{del:0.2}
+    {ars:moderationBOTLOG}
+<<
+
+[#CONTINUE#]
+
+<<HasCaps71?>>={init}
+//71-80
+:break unless $block_caps_limit > 70
+:break unless $block_caps_limit < 80
+:break unless user.has_role(mod_role) >>
+    {user}, please do not use that many capital letters.{del:0.2}
+    {ars:moderationBOTLOG}
+<<
+
+[#CONTINUE#]
+
+<<HasCaps81?>>={init}
+//81-90
+:break unless $block_caps_limit > 80
+:break unless $block_caps_limit < 90
+:break unless user.has_role(mod_role) >>
+    {user}, please do not use that many capital letters.{del:0.2}
+    {ars:moderationBOTLOG}
+<<
+[#CONTINUE#]
+
+<<HasCaps91?>>={init}
+//91-100
+:break unless $block_caps_limit > 91
+:break unless user.has_role(mod_role) >>
+    {user}, please do not use that many capital letters.{del:0.2}
+    {ars:moderationBOTLOG}
+<<
+[#CONTINUE#]
+
+moderationMODLOG={init}
+{arslock}
+
+{ars:moderationMODLOG2}
+String.{trigger} == &warn {params}?:{m?modTemp:modLogTrigger} := warn
+String.{trigger} == &kick {params}?:{m?modTemp:modLogTrigger} := kick
+String.{trigger} == &ban {params}?:{m?modTemp:modLogTrigger} := ban
+Response.nil?:{stop}
+
+[#CONTINUE#]
+
+moderationMODLOG2={init}
+{arslock}
+:break unless $mod_log_channel != 0 >> {ars:moderationMODLOG3}
+{split: }
+
+{redirect:$mod_log_channel}
+{embed:
+    {title:{r?modTemp:modLogTrigger}}
+    {description:
+        Action by {self} to {/user} ({rawid}).
+        Reason: {/p1}
+    }
+    {color:{r?modConfig:{r?modTemp:modLogTrigger}}}
+    {footer|text:{timestamp:02 Jan 2006 at 11:59 PM}}
+}
+{ars:moderationMODLOG3}
+
+[#CONTINUE#]
+
+moderationMODLOG3={init}
+{arslock}
+
+DB:modCases.{rawid}?:{e?modCases:{rawid}(+1)}
+Response.nil?:{m?modCases:1}
+
+[#CONTINUE#]
+
+moderationBOTLOG={init}
+{arslock}
+:break unless $bot_log_channel != 0
+
+{ars:moderationBOTLOG2}
+String.{trigger} == &{:}(http|https)://(www.|)(youtu)(.be|be.com/watch)|(youtube.com/)(user|c)={init}}?:{m?modTemp:botLogTrigger} := yotube link
+String.{trigger} == &{:}(http|https)://(www.|)(youtu)(.be|be.com/watch)|(youtube.com/)(user|c)={init}?:{m?modTemp:botLogTrigger} := twitch link
+String.{trigger} == &{:}(http|https)://(www.|)(twiter.com/.|t.co)?:{m?modTemp:botLogTrigger} := twitter link
+String.{trigger} == &{:}(discord.)(io|gg)|(discordapp.com/invite)?:{m?modTemp:botLogTrigger} := discord link
+Response.nil?:{m?modTemp:botLogTrigger} := capital letters
+
+[#CONTINUE#]
+
+moderationBOTLOG2={init}
+{arslock}
+:break unless $bot_log_channel != 0
+
+{redirect:$mod_log_channel}
+Message deleted 🗑️ in <#{chanid}> ({chanid}) because of `{r?modTemp:botLogTrigger}`.
+```
+{content}
+```
+
+[#CONTINUE#]
