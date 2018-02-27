@@ -1,6 +1,7 @@
 use economy;
 use channels;
 use blacklist;
+use shop;
 
 green = "00FF00";
 red = "FF4500";
@@ -274,6 +275,7 @@ function refreshAccount(user) {
             name: name,
             money: 0,
             cooldown: 0
+            inventory: {} 
         }
     }
     economy[ID] = JSON.stringify(account)
