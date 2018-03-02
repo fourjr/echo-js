@@ -428,7 +428,8 @@ function userToObject(obj) {
         return options[0];
     }
     if(options.length == 0 || options.length == len) {
-        for(m in Server.Members){
+        for(member in Server.Members){
+          m = Server.Members[member]
           if(m.Name.toLowerCase().startsWith(obj) || m.ID == obj){
             options.push([m.ID, getAccount(m.ID)])
           }
