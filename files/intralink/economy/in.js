@@ -409,7 +409,7 @@ function userToObject(obj) {
         if(economy.hasOwnProperty(UserID)) {
             return [UserID, JSON.parse(economy[UserID])];
         } else {
-            return undefined
+            return [UserID, getAccount(UserID)]
         }
     }
     options = []
@@ -428,7 +428,14 @@ function userToObject(obj) {
         return options[0];
     }
     if(options.length == 0 || options.length == len) {
-        return undefined;
+        for(m in Server.Members){
+          if(m.Name.toLowerCase().startsWith(obj) || m.ID == obj){
+            options.push([m.ID, getAccount(m.ID)])
+          }
+        } 
+
+        if(options.length == 1) return options[0]
+        if(options.length == 0 || options.length == len) return undefined
     }
     return options;
 }
