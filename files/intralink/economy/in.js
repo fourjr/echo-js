@@ -389,8 +389,7 @@ function isStaff(UID) {
     if(addr.OwnerID == UID) {
         return true;
     }
-    for(i = 0; i < addr.
-# Staff.length; i++) {
+    for(i = 0; i < addr.Staff.length; i++) {
         if(addr.Staff[i] == UID) {
             return true;
         }
