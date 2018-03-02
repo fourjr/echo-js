@@ -389,7 +389,8 @@ function isStaff(UID) {
     if(addr.OwnerID == UID) {
         return true;
     }
-    for(i = 0; i < addr.Staff.length; i++) {
+    for(i = 0; i < addr.
+# Staff.length; i++) {
         if(addr.Staff[i] == UID) {
             return true;
         }
@@ -407,7 +408,7 @@ function userToObject(obj) {
     if(obj == "<@" + UserID + ">") {
         //There is a mention
         if(economy.hasOwnProperty(UserID)) {
-            return [UserID, economy[UserID]];
+            return [UserID, JSON.parse(economy[UserID])];
         } else {
             return undefined
         }
