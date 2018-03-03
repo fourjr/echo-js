@@ -430,7 +430,7 @@ function userToObject(obj) {
     if(options.length == 0) {
         for(member in Server.Members){
           m = Server.Members[member].User
-          if(m.Username.toLowerCase().startsWith(obj) || m.ID == obj){
+          if(m.Username.toLowerCase().startsWith(obj) || m.ID == obj || obj == m.String()){
             options.push([m.ID, getAccount(m.ID)])
           }
         } 
