@@ -427,7 +427,7 @@ function userToObject(obj) {
     if(options.length == 1) {
         return options[0];
     }
-    if(options.length == 0 || options.length == len) {
+    if(options.length == 0) {
         for(member in Server.Members){
           m = Server.Members[member].User
           if(m.Username.toLowerCase().startsWith(obj) || m.ID == obj){
@@ -438,6 +438,9 @@ function userToObject(obj) {
         if(options.length == 1) return options[0]
         if(options.length == 0 || options.length == len) return undefined
     }
+    if(options.length == len){
+        return undefined
+    } 
     return options;
 }
 
