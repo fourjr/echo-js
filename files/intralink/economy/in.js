@@ -22,6 +22,10 @@ aliases = {
 
 reserved = ["<@249891250117804032>", "."];
 
+if(Params === undefined){
+    Params = "";
+}
+
 work = [
 "You found $__ on the floor!",
 "Your boss decided to give you a bonus of $__ as you were working hard!",
