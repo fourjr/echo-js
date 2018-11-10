@@ -408,6 +408,9 @@ String.prototype.isInteger = function() {
 function userToObject(obj) {
     //Given an ID or name, return a list of [ID, economy status]
     obj = obj.toLowerCase()
+    if(obj == ""){
+        return undefined;
+    }
     if(obj == "<@" + UserID + ">") {
         //There is a mention
         if(economy.hasOwnProperty(UserID)) {
@@ -416,16 +419,16 @@ function userToObject(obj) {
             return [UserID, getAccount(UserID)]
         }
     }
-    options = []
-    len = 0
+    options = [];
+    len = 0;
     for(i in economy) {
-        len += 1
+        len += 1;
         account = JSON.parse(economy[i]);
         if(i.toLowerCase() == obj) {
-            options.push([i, account]) 
+            options.push([i, account]);
         }
         if(account.name.toLowerCase().startsWith(obj)) {
-            options.push([i, account]) 
+            options.push([i, account]);
         }
     }
     if(options.length == 1) {
@@ -433,23 +436,23 @@ function userToObject(obj) {
     }
     if(options.length == 0) {
         for(member in Server.Members){
-          m = Server.Members[member].User
+          m = Server.Members[member].User;
           if(m.Username.toLowerCase().startsWith(obj) || m.ID == obj || m.String().toLowerCase() == obj){
-            options.push([m.ID, getAccount(m.ID)])
+            options.push([m.ID, getAccount(m.ID)]);
           }
         } 
 
-        if(options.length == 1) return options[0]
-        if(options.length == 0 || options.length == len) return undefined
+        if(options.length == 1) return options[0];
+        if(options.length == 0 || options.length == len) return undefined;
     }
     if(options.length == len){
-        return undefined
+        return undefined;
     } 
     return options;
 }
 
-trigger = Trigger.replace("&", "").replace(" {params}", "")
-prefixed = checkPrefix(trigger)
+trigger = Trigger.replace("&", "").replace(" {params}", "");
+prefixed = checkPrefix(trigger);
 /*
 if(!prefixed && aliases.hasOwnProperty(trigger)){
     for(i = 0; i < aliases[trigger].length - 1; i++){
